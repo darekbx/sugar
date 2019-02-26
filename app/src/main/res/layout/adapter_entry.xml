@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="entry" type="com.sugar.Entry" />
+    </data>
+    <android.support.percent.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="3">
+        <TextView
+            android:id="@+id/space"
+            app:layout_widthPercent="30%"
+            android:layout_height="wrap_content"
+            style="@style/entry_text"
+            />
+        <TextView
+            android:id="@+id/sugar_amount"
+            app:layout_widthPercent="20%"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/space"
+            android:text="@{@string/value_format(entry.sugar_amount)}"
+            android:gravity="right"
+            android:background="#203F51B5"
+            style="@style/entry_text"
+            />
+        <TextView
+            app:layout_widthPercent="50%"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/sugar_amount"
+            android:text="@{entry.description}"
+            style="@style/entry_text"
+            />
+    </android.support.percent.PercentRelativeLayout>
+</layout>

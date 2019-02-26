@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Sugar</string>
+    <string name="action_chart">Chart</string>
+
+    <string name="hint_description">Description</string>
+    <string name="hint_sugar">Sugar [g]</string>
+    <string name="hint_weight">Weight [g]</string>
+    <string name="hint_sugar_per_weight">Sugar weight [g]</string>
+    <string name="hint_portion_weight">Portion weight [g]</string>
+
+    <string name="button_save">Save</string>
+    <string name="button_insert">Insert</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="add_dialog_title">New entry</string>
+    <string name="calculate_dialog_title">Calculate</string>
+    <string name="value_format">%.1fg</string>
+    <string name="today_sugar">Today\'s sugar: %.1fg</string>
+    <string name="items_count">Item\'s count: %s</string>
+    <string name="sugar_eaten">Sugar eaten: %.3fkg</string>
+    <string name="action_settings">Settings</string>
+</resources>

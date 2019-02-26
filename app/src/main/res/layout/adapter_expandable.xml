@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="summary" type="com.sugar.model.Summary" />
+        <variable name="handlers" type="com.sugar.adapter.ExpandableRecyclerAdapter.BindingViewHolder" />
+    </data>
+    <android.support.percent.PercentRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#fff"
+        android:onClick="@{handlers.onClickGroup}">
+        <TextView
+            android:id="@+id/date"
+            app:layout_widthPercent="30%"
+            android:layout_height="wrap_content"
+            android:text="@{summary.date + ` (` + summary.count + `)`}"
+            style="@style/summary_text"
+            android:textColor="@color/black"
+            />
+        <TextView
+            app:layout_widthPercent="20%"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/date"
+            android:text="@{@string/value_format(summary.sugar_amount)}"
+            android:gravity="right|center"
+            style="@style/summary_text"
+            app:textAmountColor="@{summary.color}"
+            android:textStyle="bold"
+            />
+        <LinearLayout
+            android:id="@+id/children_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/date"
+            android:orientation="vertical"
+            android:visibility="gone">
+        </LinearLayout>
+    </android.support.percent.PercentRelativeLayout>
+</layout>
