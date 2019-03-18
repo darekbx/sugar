@@ -19,8 +19,6 @@ import java.util.List;
  */
 public class ChartView extends View {
 
-    private static final float AMOUNT_RATIO = 1.0f;
-
     private Paint mPaint;
     private List<Summary> mData;
 
@@ -42,19 +40,26 @@ public class ChartView extends View {
         invalidate();
     }
 
+    public void setDataNoColor(List<Summary> data) {
+        mData = data;
+        invalidate();
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         if (mData != null) {
             float width = getWidth();
-            float halfHeight = getHeight() / 2;
-            float chunkSize = (width / (float)(mData.size() +1));
-            float start = chunkSize;
+            float height = 150F;
+            float chunkSize = (width / (float)(mData.size() - 1));
+            float start = 0F;
 
+            float max = (float)getMaxValue();
+            float heightRatio = height / max;
             PointF temp = null;
             int tempColor = 0;
 
             for (Summary summary : mData) {
-                float value = halfHeight - (float)summary.sugar_amount * AMOUNT_RATIO;
+                float value = height - ((float)summary.sugar_amount * heightRatio);
                 if (temp == null) {
                     temp = new PointF(start, value);
                     tempColor = summary.color;
@@ -70,7 +75,14 @@ public class ChartView extends View {
                 temp = new PointF(start, value);
                 tempColor = summary.color;
             }
-
         }
+    }
+
+    private double getMaxValue() {
+        double max = 0.0;
+        for (Summary summary : mData) {
+            max = Math.max(summary.sugar_amount, max);
+        }
+        return max;
     }
 }

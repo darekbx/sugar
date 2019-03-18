@@ -30,27 +30,37 @@
                 <TextView
                     android:id="@+id/todays_sugar"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
                     android:textSize="24sp"
                     android:textColor="#eee"
+                    tools:text="todays_sugar"
                     />
                 <TextView
                     android:id="@+id/items_count"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
                     android:textSize="20sp"
                     android:textColor="#eee"
+                    tools:text="items_count"
                     />
                 <TextView
                     android:id="@+id/sugar_eaten"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
                     android:textSize="18sp"
                     android:textColor="#eee"
+                    tools:text="sugar_eaten"
                     />
+
+                <com.sugar.view.ChartView
+                    android:id="@+id/chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+
             </LinearLayout>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
@@ -68,9 +78,10 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_dialer"
-        app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="bottom|end" />
+        android:src="@drawable/ic_plus"
+        app:layout_anchor="@+id/list"
+        app:layout_anchorGravity="bottom|right" />
 
 </android.support.design.widget.CoordinatorLayout>

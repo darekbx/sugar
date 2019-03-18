@@ -18,7 +18,10 @@ import com.sugar.adapter.ExpandableRecyclerAdapter;
 import com.sugar.data.DataManager;
 import com.sugar.dialogs.AddDialog;
 import com.sugar.model.Summary;
+import com.sugar.view.ChartView;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.Bind;
@@ -39,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.sugar_eaten)
     TextView sugarEaten;
 
+    @Bind(R.id.chart)
+    ChartView chart;
+
     private ExpandableRecyclerAdapter adapter;
     private DataManager dataManager;
 
@@ -53,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         dataManager = new DataManager();
         loadData();
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +113,14 @@ public class MainActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
 
                 setTodaySummary(summaries);
+
+                List<Summary> summariesForChart = new ArrayList(summaries);
+                Collections.reverse(summariesForChart);
+
+                for (Summary summary : summariesForChart) {
+                    summary.color = getResources().getColor(summary.color);
+                }
+                chart.setDataNoColor(summariesForChart);
             }
         });
     }

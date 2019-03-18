@@ -55,6 +55,7 @@ public class ExpandableRecyclerAdapter extends RecyclerView.Adapter<ExpandableRe
     }
 
     public void expand(int groupIndex) {
+        if (items.size() == 0) return;
         items.get(groupIndex).isExpanded = true;
     }
 
@@ -82,7 +83,7 @@ public class ExpandableRecyclerAdapter extends RecyclerView.Adapter<ExpandableRe
         @BindingAdapter({"bind:textAmountColor"})
         public static void setTextAmountColor(View view, int color) {
             if (context != null && color != 0) {
-                ((TextView) view).setTextColor(context.getResources().getColor(color));
+                ((TextView) view).setTextColor(color);
             }
         }
 

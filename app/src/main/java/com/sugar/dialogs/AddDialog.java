@@ -4,6 +4,7 @@ import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,6 +86,16 @@ public class AddDialog extends DialogFragment {
 
     @OnClick(R.id.button_save)
     public void save() {
+
+        if (TextUtils.isEmpty(description.getText().toString().trim())) {
+            description.setError(getString(R.string.empty_error));
+            return;
+        }
+        if (TextUtils.isEmpty(sugar.getText().toString().trim())) {
+            sugar.setError(getString(R.string.empty_error));
+            return;
+        }
+
         new DataManager().saveEntry(getActivity(), createEntry());
         if (listener != null) {
             listener.onAdd();
