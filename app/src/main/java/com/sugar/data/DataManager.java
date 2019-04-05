@@ -98,7 +98,7 @@ public class DataManager implements EntryDataSource {
                 });
     }
 
-    public Observable<List<Entry>> getEntries(final Context context) {
+    public Observable<List<Entry>> getDistinctEntries(final Context context) {
         return Observable
                 .create(new Observable.OnSubscribe<List<Entry>>() {
                     @Override
@@ -118,6 +118,25 @@ public class DataManager implements EntryDataSource {
                     @Override
                     public String call(Entry entry) {
                         return entry.getDescription();
+                    }
+                })
+                .toList();
+    }
+
+    public Observable<List<Entry>> getAllEntries(final Context context) {
+        return Observable
+                .create(new Observable.OnSubscribe<List<Entry>>() {
+                    @Override
+                    public void call(Subscriber<? super List<Entry>> subscriber) {
+                        List<Entry> entries = doGetEntries(context);
+                        subscriber.onNext(entries);
+                        subscriber.onCompleted();
+                    }
+                })
+                .flatMap(new Func1<List<Entry>, Observable<Entry>>() {
+                    @Override
+                    public Observable<Entry> call(List<Entry> entries) {
+                        return Observable.from(entries);
                     }
                 })
                 .toList();

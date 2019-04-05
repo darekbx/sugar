@@ -58,7 +58,7 @@ public class AddDialog extends DialogFragment {
         });
 
         new DataManager()
-                .getEntries(getActivity())
+                .getDistinctEntries(getActivity())
                 .subscribe(new Action1<List<Entry>>() {
                     @Override
                     public void call(List<Entry> entries) {

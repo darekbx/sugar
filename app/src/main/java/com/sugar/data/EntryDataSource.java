@@ -15,6 +15,7 @@ import rx.Observable;
  */
 public interface EntryDataSource {
     Observable<List<Summary>> getSummaries(@NonNull final Context context);
-    Observable<List<Entry>> getEntries(@NonNull final Context context);
+    Observable<List<Entry>> getDistinctEntries(@NonNull final Context context);
+    Observable<List<Entry>> getAllEntries(@NonNull final Context context);
     void saveEntry(@NonNull final Context context, @NonNull Entry... entry);
 }

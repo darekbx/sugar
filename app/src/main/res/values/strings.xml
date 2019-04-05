@@ -15,8 +15,13 @@
     <string name="calculate_dialog_title">Calculate</string>
     <string name="value_format">%.1fg</string>
     <string name="today_sugar">Today\'s sugar: %.1fg</string>
-    <string name="items_count">Item\'s count: %s</string>
+    <string name="items_count">Item\'s count: %d</string>
     <string name="sugar_eaten">Sugar eaten: %.3fkg</string>
     <string name="action_settings">Settings</string>
     <string name="empty_error">Cannot be empty</string>
+
+    <string name="export_message">Export data to file?</string>
+    <string name="export_yes">Yes</string>
+    <string name="export_cancel">Cancel</string>
+    <string name="export_saved">Saved to :%s</string>
 </resources>
